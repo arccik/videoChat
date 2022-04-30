@@ -1,0 +1,9 @@
+.logo {
+  color: white;
+  padding: 30px;
+  max-height: 30px;
+}
+.header {
+  display: block;
+  background-color: #282a35;
+}
