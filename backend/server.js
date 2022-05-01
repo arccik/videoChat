@@ -1,10 +1,12 @@
 const express = require("express");
 const http = require("http");
+require("dotenv").config();
+
 const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.ALLOWED_ORIGIN,
     methods: ["GET", "POST"],
   },
 });
@@ -29,4 +31,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(5000, () => console.log("server is running on port 5000"));
+server.listen(process.env.PORT, () =>
+  console.log(`server is running on port ${process.env.PORT}`)
+);

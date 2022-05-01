@@ -7,7 +7,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Peer from "simple-peer";
 import io from "socket.io-client";
-import "../App.css";
+import styled from "./videoChat.module.css";
 
 const socket = io.connect("http://localhost:5000");
 function VideoChat() {
@@ -94,21 +94,21 @@ function VideoChat() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Meet people all over the world</h1>
-      <div className="container">
-        <div className="video-container">
-          <div className="video">
+      <h1 className={styled.title}>Welcome to VidoCity</h1>
+      <div className={styled.container}>
+        <div className={styled.videoContainer}>
+          <div className={styled.video}>
             {stream && (
               <video
                 playsInline
                 muted
                 ref={myVideo}
                 autoPlay
-                style={{ width: "300px" }}
+                style={{ width: "300px", borderRadius: 50 }}
               />
             )}
           </div>
-          <div className="video">
+          <div className={styled.video}>
             {callAccepted && !callEnded ? (
               <video
                 playsInline
@@ -119,7 +119,7 @@ function VideoChat() {
             ) : null}
           </div>
         </div>
-        <div className="myId">
+        <div className={styled.myId}>
           <TextField
             id="filled-basic"
             label="Name"
@@ -145,7 +145,7 @@ function VideoChat() {
             value={idToCall}
             onChange={(e) => setIdToCall(e.target.value)}
           />
-          <div className="call-button">
+          <div className={styled.callButton}>
             {callAccepted && !callEnded ? (
               <Button variant="contained" color="secondary" onClick={leaveCall}>
                 End Call
@@ -163,14 +163,15 @@ function VideoChat() {
           </div>
         </div>
         <div>
-          {receivingCall && !callAccepted ? (
-            <div className="caller">
+          {console.log(receivingCall)}
+          {receivingCall && !callAccepted && (
+            <div className={styled.caller}>
               <h1>{name} is calling...</h1>
               <Button variant="contained" color="primary" onClick={answerCall}>
                 Answer
               </Button>
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     </>

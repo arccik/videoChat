@@ -10,8 +10,8 @@ function App() {
         <main className="mainContent">
           <VideoChat />
         </main>
+        <footer className="mainFooter"></footer>
       </div>
-      <footer className="mainFooter">Footer</footer>
     </>
   );
 }

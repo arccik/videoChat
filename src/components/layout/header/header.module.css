@@ -1,9 +1,13 @@
 .logo {
   color: white;
-  padding: 30px;
-  max-height: 30px;
+  padding: 10px;
+  /* max-height: 30px; */
+}
+.logo img {
+  width: 50px;
+  margin-left: 100px;
 }
 .header {
-  display: block;
-  background-color: #282a35;
+  /* display: block; */
+  background-color: #d8d8d8;
 }
